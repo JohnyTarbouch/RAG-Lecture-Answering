@@ -24,7 +24,7 @@ class DataController(BaseController):
         cleaned_name = cleaned_name.replace(' ', '_')
         return cleaned_name
     
-    def generate_unique_filename(self, original_file_name: str, project_id: str):
+    def generate_unique_filepath(self, original_file_name: str, project_id: str):
         rand_file_name = self.generate_rand_str()
         project_path = ProjectController().get_project_path(project_id=project_id)
         
@@ -44,4 +44,4 @@ class DataController(BaseController):
                 rand_file_name + '_' + cleaned_file_name,
             )
 
-        return new_file_path
+        return new_file_path, rand_file_name + '_' + cleaned_file_name
