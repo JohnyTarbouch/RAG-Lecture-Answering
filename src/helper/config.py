@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     MONGODB_DB: str
     
     class Config:
-        env_file = ".env"
+        env_file = "../.env"
         
         
 def get_settings():
