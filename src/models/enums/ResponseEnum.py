@@ -5,3 +5,4 @@ class ResponceSignal(Enum):
     FILE_SIZE_EXEEDED = 'Upload file size exceeds 10 MB'
     FILE_UPLOAD_SUCCESS = 'File successfully uploaded'
     FILE_UPLOAD_FAILED = 'File upload failed'
+    FILE_PROCESSING_FAILED = 'File processing failed'
