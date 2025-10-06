@@ -20,7 +20,7 @@ data_router = APIRouter(
 
 @data_router.post('/upload/{project_id}')
 async def upload_file(request: Request, project_id: str, file: UploadFile, app_settings: Settings = Depends(get_settings)):
-    project_model = ProjectModel(
+    project_model = await ProjectModel.create_instance(
         db_client=request.app.db_client
     )
     
@@ -76,8 +76,8 @@ async def process_endpoint(request: Request, project_id: str, process_request: P
     overlap_size = process_request.overlap_size
     process_controller = ProcessController(project_id=project_id)
     do_reset = process_request.do_reset
-    
-    project_model = ProjectModel(
+
+    project_model = await ProjectModel.create_instance(
         db_client=request.app.db_client
     )
     project = await project_model.get_or_create_project(
@@ -109,8 +109,8 @@ async def process_endpoint(request: Request, project_id: str, process_request: P
         ) 
         for idx, chunk in enumerate(file_chunks)
     ]
-    
-    chunk_model = ChunkModel(
+
+    chunk_model = await ChunkModel.create_instance(
         db_client=request.app.db_client
     )
     
