@@ -217,5 +217,5 @@ __marimo__/
 
 
 # ADD
-assets/files/
+src/assets/
 docker/
